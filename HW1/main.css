@@ -1,0 +1,167 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;          
+  justify-content: center;
+  align-items: center;   
+  height: 30vh;
+  gap: 10px;          
+  background-color: #f4f4f4;
+}
+
+.box {
+  background: #bdcccd;
+  color: black;
+  padding: 20px;
+  font-size: 24px;
+  text-align: center;
+  flex: 1; 
+}
+
+nav {
+  background-color: #333;
+  display: flex;        
+  justify-content: center; 
+  padding: 10px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+  background-color: #575757;
+  border-radius: 5px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 20px 0;
+  color: #222;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 15px 0;
+  color: #333;
+  border-bottom: 2px solid #ddd; 
+  padding-bottom: 5px;
+}
+
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 10px 0;
+  color: #444;
+}
+
+img {
+  max-width: 100%;   
+  height: auto;     
+  display: block;    
+  margin: 15px auto; 
+  border-radius: 10px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+img:hover {
+  transform: scale(1.02); 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25); 
+}
+
+
+figure {
+  text-align: center;
+  margin: 20px auto;
+}
+
+figcaption {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 5px;
+  font-style: italic;
+}
+
+figcaption a {
+  color: #0077cc;
+  text-decoration: none;
+}
+
+figcaption a:hover {
+  text-decoration: underline;
+  color: #005fa3;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+
+.info-box {
+  background-color: #e6f2ff; 
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.info-box h2 {
+  margin-top: 0;
+  color: #222;
+}
+
+.info-box p {
+  color: #333;
+  line-height: 1.5;
+}
+
+.main-section {
+  background: linear-gradient(135deg, #f5f9ff, #e6f0ff);
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.main-content {
+  max-width: 900px;
+}
+
+.main-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.main-content p {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #333;
+  margin-bottom: 15px;
+}
