@@ -1,0 +1,106 @@
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font: 16px/1.4 Arial, Helvetica, sans-serif;
+  background: #f4f4f4;
+  color: #111;
+}
+
+.game {
+  width: 860px;
+  max-width: 95vw;
+  margin: 20px auto;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 18px;
+}
+
+h1 { margin: 0 0 10px; font-size: 26px; font-weight: 700; }
+
+#hangman {
+  display: flex;          
+  align-items: center;
+  gap: 16px;
+  margin: 6px 0 10px;
+}
+
+svg { width: 260px; height: 280px; }
+
+.gallow { stroke: #444; stroke-width: 5; stroke-linecap: round; }
+.part   { stroke: #b00; stroke-width: 5; stroke-linecap: round; fill: none; opacity: 0; }
+.part.show { opacity: 1; }
+
+#sidePic {
+  display: block;
+  width: 160px;
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.status { text-align: center; margin: 10px 0; }
+
+.word {
+  display: inline-flex;
+  gap: 6px;
+  font-size: 28px;
+  letter-spacing: 1px;
+}
+
+.word .slot {
+  width: 26px; height: 38px;
+  border-bottom: 3px solid #666;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.misses { color: #555; min-height: 20px; margin-top: 6px; }
+
+.keyboard {
+  display: grid;
+  grid-template-columns: repeat(13, 1fr);
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.key {
+  padding: 8px 0;
+  background: #e8e8e8;
+  border: 1px solid #bbb;
+  color: #111;
+  cursor: pointer;
+}
+
+.key[disabled] {
+  background: #f2f2f2;
+  color: #888;
+  cursor: default;
+}
+
+.controls {
+  margin-top: 14px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.primary {
+  background: #2e6bd1;
+  color: #fff;
+  border: 1px solid #1d4c98;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.message { min-height: 22px; color: #0a7a2a; }
+.message.lose { color: #b00; }
+
+@media (max-width: 560px) {
+  .keyboard { grid-template-columns: repeat(9, 1fr); }
+  svg { width: 210px; height: 230px; }
+  #sidePic { width: 130px; }
+}
