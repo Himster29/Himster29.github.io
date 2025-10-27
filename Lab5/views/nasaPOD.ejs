@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+
+<head><%- include("partials/head.ejs") %></head>
+
+
+<body class="d-flex flex-column min-vh-100">
+    <h1 class="text-center bg-primary p-5 text-white m-0">Astronomy Picture of the Day</h1>
+
+    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+        <%- include("partials/nav.ejs") %>
+    </nav>
+
+    <main class="container my-4 flex-grow-1">
+        <h4>Due to government shutdown media currently not available</h4>
+        <h2 class="mb-1">
+            <%= data.title %>
+        </h2>
+        <p class="text-muted">
+            <%= data.date %>
+        </p>
+
+        <% if (isImage && mediaUrl) { %>
+            <img src="<%= mediaUrl %>" alt="<%= data.title %>" class="img-fluid rounded shadow-sm mb-3">
+            <% } else if (mediaUrl) { %>
+                <div class="ratio ratio-16x9 mb-3">
+                    <iframe src="<%= mediaUrl %>" title="<%= data.title %>" allowfullscreen></iframe>
+                </div>
+                <% } else { %>
+                    <div class="alert alert-warning">No media available.</div>
+                    <% } %>
+
+                        <p>
+                            <%= data.explanation %>
+                        </p>
+    </main>
+
+    <footer>
+        <%- include("partials/footer.ejs") %>
+    </footer>
+</body>
+
+</html>

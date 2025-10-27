@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("partials/head.ejs") %>
+</head>
+
+<body>
+    <h1 class="text-center bg-primary p-5 text-white m-0 header-gradient">The Solar System</h1>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark" data-bs-theme="dark">
+        <%- include("partials/nav.ejs") %>
+    </nav>
+
+    <div class="container my-4">
+        <div class="row g-4 align-items-start">
+            <!-- Left column: info -->
+            <div class="col-12 col-lg-6">
+                <h2 class="mb-3">
+                    <%= planet_name %>
+                </h2>
+                <p class="mb-4 card-soft">
+                    <%= planetInfo.description %>
+                </p>
+
+                <div class="row row-cols-1 row-cols-md-2 g-3">
+                    <div class="col">
+                        <div class="border rounded p-3 h-100">
+                            <div class="text-muted small">Distance from Sun</div>
+                            <div class="fw-semibold">
+                                <%= planetInfo.distanceFromSun || '—' %>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="border rounded p-3 h-100">
+                            <div class="text-muted small">Year Length</div>
+                            <div class="fw-semibold">
+                                <%= planetInfo.yearLength || '—' %>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="border rounded p-3 h-100">
+                            <div class="text-muted small">Day Length</div>
+                            <div class="fw-semibold">
+                                <%= planetInfo.oneEarthDay || '—' %>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="border rounded p-3 h-100">
+                            <div class="text-muted small">Radius (km)</div>
+                            <div class="fw-semibold">
+                                <%= (planetInfo.radius ?? '' ) && Number(planetInfo.radius).toLocaleString() || '—' %>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="border rounded p-3 h-100">
+                            <div class="text-muted small">Moons</div>
+                            <div class="fw-semibold">
+                                <%= (planetInfo.moons ?? '' ) !=='' ? planetInfo.moons : '—' %>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="border rounded p-3 h-100">
+                            <div class="text-muted small">More Info</div>
+                            <div class="fw-semibold">
+                                <% if (planetInfo.websiteLink) { %>
+                                    <a href="<%= planetInfo.websiteLink %>" target="_blank" class="link-primary">NASA
+                                        page</a>
+                                    <% } else { %>—<% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right column: image -->
+            <div class="col-12 col-lg-6">
+                <img src="<%= planetInfo.image %>" alt="<%= planet_name %>" class="img-frame" class="img-fluid rounded shadow-sm w-100">
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <%- include("partials/footer.ejs") %>
+    </footer>
+</body>
+
+</html>
