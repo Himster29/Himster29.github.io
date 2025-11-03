@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('partials/head', { title: 'Research' }) %>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark" data-bs-theme="dark">
+        <%- include("partials/nav.ejs") %>
+    </nav>
+
+<div class="container py-4">
+  <h1 class="mb-4">Crypto Research</h1>
+<h3 class="mb-4">Type in a the name of the coin you want to research</h3>
+
+  <form class="row g-2 mb-4" method="GET" action="/research">
+    <div class="col-sm-9">
+      <input class="form-control" name="coin" value="<%= query %>"
+             placeholder="Enter coin (name or id): bitcoin, ethereum, solana">
+    </div>
+    <div class="col-sm-3 d-grid">
+      <button class="btn btn-success">Search</button>
+    </div>
+  </form>
+
+  <% if (usd !== null) { %>
+    <h3 class="mb-3">
+      <span class="text-info"><%= id %></span> — $<%= usd.toLocaleString() %>
+    </h3>
+    <canvas id="priceChart" height="320"></canvas>
+  <% } else { %>
+    <p>No data found for "<%= query %>".</p>
+  <% } %>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const labels = <%- JSON.stringify(labels) %>;
+  const data = <%- JSON.stringify(prices) %>;
+  if (labels.length && data.length) {
+    new Chart(document.getElementById('priceChart'), {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [{
+          label: 'USD Price (7 days)',
+          data,
+          borderWidth: 2,
+          fill: false,
+          tension: 0.25
+        }]
+      },
+      options: {
+        plugins: { legend: { display: true } },
+        scales: {
+          x: { ticks: { maxTicksLimit: 8 } },
+          y: { beginAtZero: false }
+        }
+      }
+    });
+  }
+</script>
+
+
+
+
+    <footer class="site-footer">
+        <%- include("partials/footer.ejs") %>
+    </footer>
+
+
+</body>
+
+</html>

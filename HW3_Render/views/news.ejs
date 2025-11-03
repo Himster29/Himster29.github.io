@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('partials/head', { title: 'News' }) %>
+</head>
+
+<body class="news-page">
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark" data-bs-theme="dark">
+        <%- include("partials/nav.ejs") %>
+    </nav>
+
+    <div class="container py-4">
+        <h1 class="mb-3">News</h1>
+
+        <form class="row g-2 mb-4" method="GET" action="/news">
+            <div class="col-sm-9">
+                <input class="form-control" name="q" value="<%= q %>"
+                    placeholder="Search topic (e.g., crypto, AI, Tesla)">
+            </div>
+            <div class="col-sm-3 d-grid">
+                <button class="btn btn-primary">Search</button>
+            </div>
+        </form>
+
+        <% if (!articles.length) { %>
+            <p>No results.</p>
+            <% } %>
+
+                <div class="row row-cols-1 row-cols-md-3 g-3">
+                    <% articles.forEach(a=> { %>
+                        <div class="col">
+                            <div class="card h-100">
+                                <img class="card-img-top"
+                                    src="<%= a.urlToImage || 'https://via.placeholder.com/640x360?text=News' %>"
+                                    alt="news">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <%= a.title %>
+                                    </h5>
+                                    <p class="card-text">
+                                        <%= a.description || '' %>
+                                    </p>
+                                </div>
+                                <div class="card-footer d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">
+                                        <%= a.source && a.source.name ? a.source.name : 'Source' %> •
+                                            <%= a.publishedAt ? new Date(a.publishedAt).toLocaleString() : '' %>
+                                    </small>
+                                    <a class="btn btn-sm btn-outline-primary" href="<%= a.url %>"
+                                        target="_blank">Read</a>
+                                </div>
+                            </div>
+                        </div>
+                        <% }) %>
+                </div>
+    </div>
+
+    <footer class="site-footer">
+        <%- include("partials/footer.ejs") %>
+    </footer>
+
+
+</body>
+
+</html>
